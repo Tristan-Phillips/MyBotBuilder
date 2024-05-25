@@ -4,11 +4,15 @@
 #include <QAction>
 #include <QStatusBar>
 
+#include "dashboardui.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     setupMenuBar();
     setupStatusBar();
+    setupCentralWidget();
+    setupConnections();
 }
 
 MainWindow::~MainWindow()
@@ -20,7 +24,7 @@ void MainWindow::setupMenuBar()
     QMenu *menu = menuBar()->addMenu(tr("&File"));
     QMenu *botsMenu = menuBar()->addMenu(tr("&Bots"));
 
-    QAction *settingsAction = new QAction(tr("&Settings"), this);
+    settingsAction = new QAction(tr("&Settings"), this);
     menu->addAction(settingsAction);
 
     QAction *exitAction = new QAction(tr("&Exit"), this);
@@ -45,5 +49,26 @@ void MainWindow::setupStatusBar()
     statusBar()->addPermanentWidget(new QWidget(), 1); // 1 is the stretch factor (1 = 100%)
     // Add the QLabel widget to the status bar
     statusBar()->addPermanentWidget(statusMessageLabel);
+}
+
+void MainWindow::setupCentralWidget()
+{
+    // Placeholder for the central widget setup
+    DashboardUI *dashboard = new DashboardUI(this);
+    setCentralWidget(dashboard);
+}
+
+void MainWindow::setupConnections()
+{
+    // Open the settings dialog when the settings action is triggered
+    connect(settingsAction, &QAction::triggered, this, &MainWindow::openSettingsDialog);
+}
+
+void MainWindow::openSettingsDialog()
+{
+    SettingsUI *settingsDialog = new SettingsUI(this);
+    settingsDialog->setAttribute(Qt::WA_DeleteOnClose);
+    settingsDialog->setWindowModality(Qt::ApplicationModal);
+    settingsDialog->show();
 }
 

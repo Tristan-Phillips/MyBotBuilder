@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include "settingsui.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -19,7 +21,11 @@ public:
     // UI setup
     void setupMenuBar();
     void setupStatusBar();
+    void setupCentralWidget();
+    void setupConnections();
+    void openSettingsDialog();
 private:
     QLabel *statusMessageLabel;
+    QAction *settingsAction;
 };
 #endif // MAINWINDOW_H
