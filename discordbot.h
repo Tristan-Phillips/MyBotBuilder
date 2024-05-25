@@ -2,7 +2,9 @@
 #define DISCORDBOT_H
 
 #include <QObject>
+#include <dpp/dpp.h>
 #include "bot.h"
+#include "discordconfig.h"
 
 class DiscordBot : public Bot
 {
@@ -15,6 +17,9 @@ public:
     QString getPlatformName() const override {
         return "Discord";
     }
+private:
+    dpp::cluster *m_cluster;
+    DiscordConfig m_config;
 };
 
 #endif // DISCORDBOT_H
