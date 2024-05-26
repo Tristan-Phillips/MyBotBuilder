@@ -9,7 +9,7 @@ class Config
 public:
     virtual ~Config() = default;
     virtual bool loadConfig(const QString &filePath) = 0;
-    virtual QString getBotToken() const = 0;
+    virtual std::string getBotToken() const = 0;
     virtual QString getSetting(const QString &key) const = 0;
 };
 

@@ -21,6 +21,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(dpp)
 
+FetchContent_Declare(
+  pugixml
+  GIT_REPOSITORY https://github.com/zeux/pugixml.git
+  GIT_TAG        master
+)
+FetchContent_MakeAvailable(pugixml)
+
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
@@ -50,6 +57,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         chatgptai.h chatgptai.cpp
         dashboardui.h dashboardui.cpp
         ui.h ui.cpp
+        xmlhandler.h xmlhandler.cpp
+        xmlhandler_discordbot.h xmlhandler_discordbot.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET MyBotBuilder APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -69,7 +78,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(MyBotBuilder PRIVATE Qt${QT_VERSION_MAJOR}::Widgets dpp)
+target_link_libraries(MyBotBuilder PRIVATE Qt${QT_VERSION_MAJOR}::Widgets dpp pugixml)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

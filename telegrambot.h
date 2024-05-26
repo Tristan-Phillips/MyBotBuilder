@@ -8,9 +8,7 @@ class TelegramBot : public Bot
 {
 public:
     explicit TelegramBot(QObject *parent = nullptr);
-    void setupAPI() override {
-        // Telegram-specific API setup
-    }
+    void setupAPI() override;
 
     QString getPlatformName() const override {
         return "Telegram";

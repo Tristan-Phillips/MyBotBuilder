@@ -10,9 +10,11 @@ class DiscordBot : public Bot
 {
 public:
     explicit DiscordBot(QObject *parent = nullptr);
-    void setupAPI() override {
-        // Discord-specific API setup
-    }
+    void setupAPI() override;
+
+    void startBot();
+
+    void registerCommands();
 
     QString getPlatformName() const override {
         return "Discord";

@@ -9,7 +9,7 @@ class DiscordConfig : public Config
 {
 public:
     bool loadConfig(const QString &filePath) override;
-    QString getBotToken() const override;
+    std::string getBotToken() const override;
     QString getSetting(const QString &key) const override;
 private:
     QJsonObject m_config;
