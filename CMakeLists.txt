@@ -37,7 +37,6 @@ add_executable(MyBotBuilder
   bottelegram.h bottelegram.cpp
   handlerio.h handlerio.cpp
   handlerxml.h handlerxml.cpp
-  mmaker.h mmaker.cpp func.h
 )
 target_link_libraries(MyBotBuilder Qt${QT_VERSION_MAJOR}::Core dpp pugixml)
 

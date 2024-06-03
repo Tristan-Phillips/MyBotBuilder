@@ -14,8 +14,8 @@ class BotDiscord : public Bot
 public:
     BotDiscord(std::string apiToken);
 private:
-    std::string apiToken;
-    dpp::Bot* bot;
+    std::string m_apiToken;
+    // dpp::Bot* m_bot;
 };
 
 #endif // BOTDISCORD_H
