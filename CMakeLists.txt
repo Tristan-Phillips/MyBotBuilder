@@ -12,10 +12,34 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
+# Add the DPP library
+include(FetchContent)
+FetchContent_Declare(
+  dpp
+  GIT_REPOSITORY https://github.com/brainboxdotcc/DPP.git
+  GIT_TAG        master
+)
+FetchContent_MakeAvailable(dpp)
+
+FetchContent_Declare(
+  pugixml
+  GIT_REPOSITORY https://github.com/zeux/pugixml.git
+  GIT_TAG        master
+)
+FetchContent_MakeAvailable(pugixml)
+
 add_executable(MyBotBuilder
   main.cpp
+  bot.h bot.cpp
+  botfactory.h botfactory.cpp
+  botdiscord.h botdiscord.cpp
+  terminalmenu.h terminalmenu.cpp
+  bottelegram.h bottelegram.cpp
+  handlerio.h handlerio.cpp
+  handlerxml.h handlerxml.cpp
+  mmaker.h mmaker.cpp func.h
 )
-target_link_libraries(MyBotBuilder Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(MyBotBuilder Qt${QT_VERSION_MAJOR}::Core dpp pugixml)
 
 include(GNUInstallDirs)
 install(TARGETS MyBotBuilder
