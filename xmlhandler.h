@@ -8,7 +8,7 @@ class XMLHandler : public QObject
 {
     Q_OBJECT
 public:
-    virtual void writeBotConfigure() = 0;
+    virtual void writeBotConfigure() = 0; 
 };
 
 #endif // XMLHANDLER_H
